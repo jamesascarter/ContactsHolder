@@ -1,9 +1,11 @@
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
+var path = require('path');
 
-app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/frontend');
+app.use(express.static(path.join(__dirname + "/frontend")));
 
 app.get('/', function(request, response){
   response.render('index')
